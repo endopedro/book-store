@@ -1,0 +1,29 @@
+{% extends "publicMain.html" %}
+{% block content %}
+
+<h1 class="my-4">{{book.title}}</h1>
+
+<div class="row">
+
+  <div class="col-lg-6">
+    <h3>
+        Synopsis:
+        <br>
+        <small>{{book.synopsis}}</small>
+        <br><br>
+        Price:
+        <br>
+        <small>{{book.price}}</small>
+        <br><br>
+        Author:
+        <br>
+        <small>{{book.author}}</small>
+    </h3>
+  </div>
+
+  <div class="col-lg-6">
+      <img src="{{book.cover}}" alt="">
+  </div>
+
+</div>
+{% endblock %}

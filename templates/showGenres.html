@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+
+<h1 class="my-4">Select the genre <a href="{{url_for('newGenre')}}" style="font-size:0.5em;">add new genre</a></h1>
+
+<div class="row">
+
+  {% for genre in genres %}
+  <div class="col-lg-4 col-sm-6 text-center mb-4">
+        <a href="{{url_for('showBooks', genre_id=genre.id)}}">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://libreshot.com/wp-content/uploads/2018/03/book-pages-861x574.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-text">{{genre.name}}</h3>
+                    {% if genre.user_id == login_id %}
+                        <a href="{{url_for('editGenre', genre_id=genre.id)}}">edit</a> |
+                        <a href="{{url_for('deleteGenre', genre_id=genre.id)}}">delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+  </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

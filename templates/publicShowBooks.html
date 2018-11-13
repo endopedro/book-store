@@ -1,0 +1,22 @@
+{% extends "publicMain.html" %}
+{% block content %}
+
+<h1 class="my-4">All {{genre.name}} books</h1>
+
+<div class="row">
+
+  {% for book in books %}
+  <div class="col-lg-4 col-sm-6 text-center mb-4">
+        <a href="{{url_for('showBook', genre_id=genre.id, book_id=book.id)}}">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{book.cover}}" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-text">{{book.title}}</h3>
+                </div>
+            </div>
+        </a>
+  </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

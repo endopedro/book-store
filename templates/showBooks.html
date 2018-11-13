@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+
+<h1 class="my-4">All {{genre.name}} books <a href="{{url_for('newBook', genre_id=genre.id)}}" style="font-size:0.5em;">add new {{genre.name}} book</a></h1>
+
+<div class="row">
+
+  {% for book in books %}
+  <div class="col-lg-4 col-sm-6 text-center mb-4">
+        <a href="{{url_for('showBook', genre_id=genre.id, book_id=book.id)}}">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{book.cover}}" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-text">{{book.title}}</h3>
+                    {% if book.user_id == login_id %}
+                        <a href="{{url_for('editBook', genre_id=genre.id, book_id=book.id)}}">edit</a> |
+                        <a href="{{url_for('deleteBook', genre_id=genre.id, book_id=book.id)}}">delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+  </div>
+  {% endfor %}
+
+</div>
+{% endblock %}
